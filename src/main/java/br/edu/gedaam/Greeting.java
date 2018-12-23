@@ -1,4 +1,4 @@
-package gedaam;
+package br.edu.gedaam;
 
 public class Greeting {
 

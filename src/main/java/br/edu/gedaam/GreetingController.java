@@ -1,4 +1,4 @@
-package gedaam;
+package br.edu.gedaam;
 
 
 import org.springframework.web.bind.annotation.RequestMapping;
