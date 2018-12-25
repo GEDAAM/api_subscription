@@ -1,24 +1,19 @@
-package br.edu.gedaam.models;
+package br.edu.gedaam.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
 @Table(name="inscricoes")
-@Getter
-@Setter
+@Data
 public class Inscricao implements Serializable {
-
-
-    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="inscricao_sequence")
     @SequenceGenerator(name="inscricao_sequence", sequenceName="sq_inscricoes")
-    private Long id;
+    private long id;
 
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="aluno_id")
