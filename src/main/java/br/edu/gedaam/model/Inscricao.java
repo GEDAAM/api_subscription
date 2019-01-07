@@ -15,9 +15,9 @@ public class Inscricao implements Serializable {
     @SequenceGenerator(name="inscricao_sequence", sequenceName="sq_inscricoes")
     private long id;
 
-    @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="aluno_id")
-    private Aluno aluno;
+    //@ManyToOne(fetch=FetchType.LAZY)
+    //@JoinColumn(name="aluno_id")
+    //private Aluno aluno;
 
 
     private String opcao1;
