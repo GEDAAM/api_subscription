@@ -2,7 +2,12 @@ package br.edu.gedaam.model;
 
 import lombok.Data;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 import java.io.Serializable;
 
 @Entity
@@ -11,7 +16,7 @@ import java.io.Serializable;
 public class Inscricao implements Serializable {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="inscricao_sequence")
+    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="inscricao_sequence")
     @SequenceGenerator(name="inscricao_sequence", sequenceName="sq_inscricoes")
     private long id;
 
