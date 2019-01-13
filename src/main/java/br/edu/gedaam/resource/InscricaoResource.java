@@ -2,6 +2,7 @@ package br.edu.gedaam.resource;
 
 import br.edu.gedaam.model.Inscricao;
 import br.edu.gedaam.repository.InscricaoRepository;
+import br.edu.gedaam.service.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +20,9 @@ public class InscricaoResource {
     @Autowired
     InscricaoRepository inscricaoRepository;
 
+    @Autowired
+    EmailService emailService;
+
     @GetMapping("/inscricoes")
     public List<Inscricao> listaInscricoes() {
         return inscricaoRepository.findAll();
@@ -32,6 +36,7 @@ public class InscricaoResource {
 
     @PostMapping("/inscricao")
     public Inscricao salvaInscricao(@RequestBody Inscricao inscricao)  {
+        emailService.sendEmail();
         return inscricaoRepository.save(inscricao);
     }
 
