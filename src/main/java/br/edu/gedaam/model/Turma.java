@@ -36,7 +36,8 @@ public class Turma implements Serializable {
 
     private Date dtInicio;
     private Date dtFim;
-    private Time horario;
+    private Time horaInicio;
+    private Time horaFim;
 
     // Desnormalizado para melhoria de performance
     private Boolean segundaFeira;
@@ -54,8 +55,7 @@ public class Turma implements Serializable {
     private List<Pessoa> coordenadores;
 
     //TODO: adicionar semestre letivo
-    //TODO: adicionar horário de fim e início
-
+ 
     public List<Aluno> getAlunos() {
         if (this.alunos == null) {
             this.alunos = new ArrayList<Aluno>();
