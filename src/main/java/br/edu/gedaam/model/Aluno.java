@@ -12,7 +12,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.io.Serializable;
@@ -34,7 +33,7 @@ public class Aluno implements Serializable {
     @JoinColumn(name="pessoa_id")
     private Pessoa pessoa;
 
-    @OneToOne(fetch= FetchType.LAZY)
+    @ManyToOne(fetch= FetchType.LAZY)
     @JoinColumn(name="id_turma")
     private Turma turma;
 
