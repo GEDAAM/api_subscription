@@ -1,6 +1,7 @@
 package br.edu.gedaam.model;
 
 import br.edu.gedaam.model.enums.Faculdade;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.Entity;
@@ -34,5 +35,6 @@ public class Pessoa implements Serializable {
 
 
     @OneToMany(mappedBy="pessoa")
+    @JsonIgnore
     private List<Aluno> alunos;
 }
