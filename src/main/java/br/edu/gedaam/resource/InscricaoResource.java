@@ -20,6 +20,10 @@ public class InscricaoResource {
     @Autowired
     InscricaoRepository inscricaoRepository;
 
+    String mailSubject = "Solicitação de Inscrição no GEDAAM";
+    String mailText = "<html>Solicitação de Inscrição efetivada com sucesso. Aguarde os próximos contatos.</html>";
+
+
     @Autowired
     EmailService emailService;
 
@@ -36,8 +40,11 @@ public class InscricaoResource {
 
     @PostMapping("/inscricao")
     public Inscricao salvaInscricao(@RequestBody Inscricao inscricao)  {
-        emailService.sendEmail();
-        return inscricaoRepository.save(inscricao);
+        Inscricao inscricao1 = inscricaoRepository.save(inscricao);
+        emailService.sendEmail(inscricao.getPessoa().getNome(),
+                inscricao.getPessoa().getEmail(),
+                mailSubject, mailText);
+        return inscricao1;
     }
 
 

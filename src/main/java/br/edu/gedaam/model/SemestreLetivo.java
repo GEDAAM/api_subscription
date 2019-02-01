@@ -21,5 +21,6 @@ public class SemestreLetivo {
 
 
     private boolean ativo;
+    private String mesAno;
 
 }

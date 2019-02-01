@@ -61,6 +61,7 @@ public class TurmaResource {
         Aluno aluno = new Aluno();
         aluno.setPessoa(pessoa);
         aluno.setTurma(turma);
+        aluno.setFrequente(true);
         alunoRepository.save(aluno);
         return turmaRepository.findById(id);
     }

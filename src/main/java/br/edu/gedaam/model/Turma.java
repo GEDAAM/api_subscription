@@ -39,12 +39,12 @@ public class Turma implements Serializable {
     private Time horario;
 
     // Desnormalizado para melhoria de performance
-    private Byte segunda_feira;
-    private Byte terca_feira;
-    private Byte quarta_feira;
-    private Byte quinta_feira;
-    private Byte sexta_feira;
-    private Byte sabado;
+    private Boolean segundaFeira;
+    private Boolean tercaFeira;
+    private Boolean quartaFeira;
+    private Boolean quintaFeira;
+    private Boolean sextaFeira;
+    private Boolean sabado;
 
 
     @OneToMany(mappedBy = "turma")

@@ -1,4 +1,4 @@
-package br.edu.gedaam.model;
+package br.edu.gedaam.util;
 
 import lombok.Data;
 
