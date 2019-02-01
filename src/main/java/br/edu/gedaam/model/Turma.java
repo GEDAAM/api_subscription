@@ -45,7 +45,7 @@ public class Turma implements Serializable {
     private Byte sabado;
 
 
-    @OneToMany(targetEntity = Aluno.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "turma", targetEntity = Aluno.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Aluno> alunos;
 
     @OneToMany(targetEntity = Pessoa.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
