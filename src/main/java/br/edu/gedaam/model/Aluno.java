@@ -30,11 +30,11 @@ public class Aluno implements Serializable {
     private long id;
 
     @ManyToOne(fetch= FetchType.LAZY)
-    @JoinColumn(name="pessoa_id")
+    @JoinColumn(name="id_pessoa", referencedColumnName = "id")
     private Pessoa pessoa;
 
     @ManyToOne(fetch= FetchType.LAZY)
-    @JoinColumn(name="id_turma")
+    @JoinColumn(name="id_turma", referencedColumnName = "id")
     private Turma turma;
 
     private boolean frequente;
