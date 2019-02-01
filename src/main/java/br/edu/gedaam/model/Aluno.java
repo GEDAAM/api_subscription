@@ -1,5 +1,6 @@
 package br.edu.gedaam.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -37,14 +38,9 @@ public class Aluno implements Serializable {
 
     @ManyToOne(fetch= FetchType.LAZY)
     @JoinColumn(name="id_turma", referencedColumnName = "id")
+    @JsonIgnore
     private Turma turma;
 
     private boolean frequente;
-
-    public Aluno(Pessoa pessoa, Turma turma)  {
-        this.pessoa = pessoa;
-        this.turma = turma;
-        this.frequente = true;
-    }
 
 }

@@ -70,11 +70,6 @@ public class Turma implements Serializable {
         return coordenadores;
     }
 
-    public Turma addStudent(Pessoa pessoa)  {
-        getAlunos().add(new Aluno(pessoa, this));
-        return this;
-    }
-
     public Turma addCoodinator(Pessoa pessoa)  {
         getCoordenadores().add(pessoa);
         return this;
