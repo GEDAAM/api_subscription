@@ -3,6 +3,7 @@ package br.edu.gedaam.resource;
 import br.edu.gedaam.model.Aluno;
 import br.edu.gedaam.model.Pessoa;
 import br.edu.gedaam.model.Turma;
+import br.edu.gedaam.repository.AlunoRepository;
 import br.edu.gedaam.repository.TurmaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +21,10 @@ public class TurmaResource {
 
     @Autowired
     TurmaRepository turmaRepository;
+
+    @Autowired
+    AlunoRepository alunoRepository;
+
 
     @GetMapping("/turmas")
     public List<Turma> listaTurmas() {
@@ -53,8 +58,10 @@ public class TurmaResource {
     @PostMapping("/turma/{id}/aluno")
     public Turma adicionaPessoaComoAluno(@PathVariable(value="id") long id, @RequestBody Pessoa pessoa)  {
         Turma turma = turmaRepository.findById(id);
+        Aluno aluno = new Aluno(pessoa, turma);
+        alunoRepository.save(aluno);
         turma.addStudent(pessoa);
-        return turmaRepository.save(turma);
+        return turma;
     }
 
     @PostMapping("/turma/{id}/coordenador")
