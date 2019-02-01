@@ -60,8 +60,7 @@ public class TurmaResource {
         Turma turma = turmaRepository.findById(id);
         Aluno aluno = new Aluno(pessoa, turma);
         alunoRepository.save(aluno);
-        turma.addStudent(pessoa);
-        return turma;
+        return turmaRepository.findById(id);
     }
 
     @PostMapping("/turma/{id}/coordenador")
