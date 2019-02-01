@@ -17,11 +17,11 @@ public class EmailService {
 
     public void sendEmail(String toName, String toEmail, String subject, String mailText) {
         try {
-            String to = toName + "<" + toEmail +">";
+            //String to = toName + "<" + toEmail +">";
             HttpResponse<JsonNode> request = Unirest.post(resourceUrl)
                     .basicAuth(emailUser, emailPassword)
                     .field("from", emailFrom)
-                    .field("to", to)
+                    .field("to", toEmail)
                     .field("subject", subject)
                     .field("html", mailText)
                     .asJson();

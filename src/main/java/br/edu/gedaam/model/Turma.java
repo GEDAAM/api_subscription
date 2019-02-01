@@ -55,7 +55,7 @@ public class Turma implements Serializable {
     private List<Pessoa> coordenadores;
 
     //TODO: adicionar semestre letivo
- 
+
     public List<Aluno> getAlunos() {
         if (this.alunos == null) {
             this.alunos = new ArrayList<Aluno>();
