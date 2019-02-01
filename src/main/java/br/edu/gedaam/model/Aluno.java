@@ -1,6 +1,8 @@
 package br.edu.gedaam.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Entity;
@@ -19,6 +21,8 @@ import java.io.Serializable;
 @Table(name="alunos")
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Aluno implements Serializable {
 
     @Id

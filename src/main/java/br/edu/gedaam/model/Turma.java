@@ -51,7 +51,8 @@ public class Turma implements Serializable {
     @OneToMany(targetEntity = Pessoa.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Pessoa> coordenadores;
 
-
+    //TODO: adicionar semestre letivo
+    //TODO: adicionar horário de fim e início
 
     public List<Aluno> getAlunos() {
         if (this.alunos == null) {
