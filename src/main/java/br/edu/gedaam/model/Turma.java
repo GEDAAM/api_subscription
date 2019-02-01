@@ -1,6 +1,7 @@
 package br.edu.gedaam.model;
 
 import br.edu.gedaam.model.enums.StatusTurma;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.CascadeType;
@@ -21,6 +22,7 @@ import java.util.List;
 @Entity
 @Table(name="turmas")
 @Data
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Turma implements Serializable {
 
 

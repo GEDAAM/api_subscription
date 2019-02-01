@@ -2,6 +2,7 @@ package br.edu.gedaam.model;
 
 import br.edu.gedaam.model.enums.Faculdade;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.Entity;
@@ -17,6 +18,7 @@ import java.util.List;
 @Entity
 @Table(name="pessoas")
 @Data
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Pessoa implements Serializable {
 
 
