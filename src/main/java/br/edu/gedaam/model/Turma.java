@@ -10,7 +10,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.io.Serializable;
@@ -47,6 +49,9 @@ public class Turma implements Serializable {
     private Boolean sextaFeira;
     private Boolean sabado;
 
+    private int numeroMaximoVagas;
+    private int numeroMinimoInscritos;
+
 
     @OneToMany(mappedBy = "turma")
     private List<Aluno> alunos;
@@ -54,7 +59,10 @@ public class Turma implements Serializable {
     @OneToMany(targetEntity = Pessoa.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Pessoa> coordenadores;
 
-    //TODO: adicionar semestre letivo
+    @OneToOne(fetch= FetchType.LAZY)
+    @JoinColumn(name="id_semestre")
+    private SemestreLetivo semestre;
+
 
     public List<Aluno> getAlunos() {
         if (this.alunos == null) {

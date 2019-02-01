@@ -1,6 +1,5 @@
 package br.edu.gedaam.model;
 
-import br.edu.gedaam.model.enums.Faculdade;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;

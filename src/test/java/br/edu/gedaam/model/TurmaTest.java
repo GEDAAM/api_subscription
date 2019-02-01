@@ -1,6 +1,5 @@
 package br.edu.gedaam.model;
 
-import br.edu.gedaam.model.enums.Faculdade;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

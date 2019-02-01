@@ -10,19 +10,15 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="semestres_letivos")
+@Table(name="faculdades")
 @Data
-public class SemestreLetivo {
+public class Faculdade {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="semestres_sequence")
-    @SequenceGenerator(name="semestres_sequence", sequenceName="sq_semestres")
+    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="faculdades_sequence")
+    @SequenceGenerator(name="faculdades_sequence", sequenceName="sq_faculdades")
     private long id;
 
-
-    private int numero;
-    private int ano;
-
-    private boolean ativo;
+    private String nome;
 
 }
