@@ -3,9 +3,8 @@ package br.edu.gedaam.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -20,8 +19,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name="alunos")
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
@@ -43,4 +41,10 @@ public class Aluno implements Serializable {
 
     private boolean frequente;
 
+
+    public Aluno(Pessoa p, Turma t) {
+        this.pessoa = p;
+        this.turma = t;
+        this.frequente = true;
+    }
 }

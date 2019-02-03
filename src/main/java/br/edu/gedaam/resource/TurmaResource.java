@@ -58,10 +58,7 @@ public class TurmaResource {
     @PostMapping("/turma/{id}/aluno")
     public Turma adicionaPessoaComoAluno(@PathVariable(value="id") long id, @RequestBody Pessoa pessoa)  {
         Turma turma = turmaRepository.findById(id);
-        Aluno aluno = new Aluno();
-        aluno.setPessoa(pessoa);
-        aluno.setTurma(turma);
-        aluno.setFrequente(true);
+        Aluno aluno = new Aluno(pessoa, turma);
         alunoRepository.save(aluno);
         return turmaRepository.findById(id);
     }

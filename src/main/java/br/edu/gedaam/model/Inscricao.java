@@ -40,4 +40,9 @@ public class Inscricao implements Serializable {
     @JoinColumn(name="id_turma_opcao2")
     private Turma opcao2;
 
+
+    public Pessoa getPessoa() {
+        return this.pessoa;
+    }
+
 }

@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -28,7 +29,7 @@ public class Pessoa implements Serializable {
 
     String nome;
     String cpf;
-    Faculdade faculdade;
+
     String matricula;
     String email;
     String telefone;
@@ -38,4 +39,16 @@ public class Pessoa implements Serializable {
     @OneToMany(mappedBy="pessoa")
     @JsonIgnore
     private List<Aluno> alunos;
+
+    @ManyToOne
+    Faculdade faculdade;
+
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getNome()  {
+        return nome;
+    }
 }
