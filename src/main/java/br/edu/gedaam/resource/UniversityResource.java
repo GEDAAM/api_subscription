@@ -1,8 +1,7 @@
 package br.edu.gedaam.resource;
 
-import br.edu.gedaam.model.Faculdade;
-import br.edu.gedaam.model.Pessoa;
-import br.edu.gedaam.repository.FaculdadeRepository;
+import br.edu.gedaam.model.University;
+import br.edu.gedaam.repository.UniversityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,23 +14,23 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value="/api")
-public class FaculdadeResource {
+public class UniversityResource {
 
     @Autowired
-    FaculdadeRepository faculdadeRepository;
+    UniversityRepository faculdadeRepository;
 
     @GetMapping("/faculdades")
-    public List<Faculdade> listaFaculdades() {
+    public List<University> listaFaculdades() {
         return faculdadeRepository.findAll();
     }
 
     @GetMapping("/faculdade/{id}")
-    public Faculdade listaFaculdadeUnica(@PathVariable(value="id") long id) {
+    public University listaFaculdadeUnica(@PathVariable(value="id") long id) {
         return faculdadeRepository.findById(id);
     }
 
     @PostMapping("/faculdade")
-    public Faculdade salvaFaculdade(@RequestBody Faculdade faculdade)  {
+    public University salvaFaculdade(@RequestBody University faculdade)  {
         return faculdadeRepository.save(faculdade);
     }
 

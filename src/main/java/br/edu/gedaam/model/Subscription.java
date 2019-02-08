@@ -13,39 +13,34 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.io.Serializable;
-import java.sql.Date;
+import java.sql.Timestamp;
 
 @Entity
-@Table(name="inscricoes")
+@Table(name="subscriptions")
 @Data
-public class Inscricao implements Serializable {
+public class Subscription implements Serializable {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="inscricoes_sequence")
-    @SequenceGenerator(name="inscricoes_sequence", sequenceName="sq_inscricoes")
+    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="subscriptions_sequence")
+    @SequenceGenerator(name="subscriptions_sequence", sequenceName="sq_subscriptions")
     private long id;
 
-    private Date dataHoraInscricao;
+    private Timestamp subscriptionTimeStamp;
 
     @ManyToOne(fetch= FetchType.LAZY)
-    @JoinColumn(name="pessoa_id")
-    private Pessoa pessoa;
+    @JoinColumn(name="id_person")
+    private Person person;
 
     @OneToOne(fetch= FetchType.LAZY)
-    @JoinColumn(name="id_semestre")
-    private SemestreLetivo semestre;
+    @JoinColumn(name="id_semester")
+    private Semester semester;
 
    @OneToOne(fetch= FetchType.LAZY)
-   @JoinColumn(name="id_turma_opcao1")
-    private Turma opcao1;
+   @JoinColumn(name="id_group_option1")
+    private Group groupOption1;
 
     @OneToOne(fetch= FetchType.LAZY)
-    @JoinColumn(name="id_turma_opcao2")
-    private Turma opcao2;
-
-
-    public Pessoa getPessoa() {
-        return this.pessoa;
-    }
+    @JoinColumn(name="id_group_option2")
+    private Group groupOption2;
 
 }

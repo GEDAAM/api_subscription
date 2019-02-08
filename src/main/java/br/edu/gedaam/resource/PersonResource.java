@@ -1,7 +1,7 @@
 package br.edu.gedaam.resource;
 
-import br.edu.gedaam.model.Pessoa;
-import br.edu.gedaam.repository.PessoaRepository;
+import br.edu.gedaam.model.Person;
+import br.edu.gedaam.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,23 +14,23 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value="/api")
-public class PessoaResource {
+public class PersonResource {
 
     @Autowired
-    PessoaRepository pessoaRepository;
+    PersonRepository personRepository;
 
     @GetMapping("/pessoas")
-    public List<Pessoa> listaPessoas() {
-        return pessoaRepository.findAll();
+    public List<Person> listaPessoas() {
+        return personRepository.findAll();
     }
 
     @GetMapping("/pessoa/{id}")
-    public Pessoa listaPessoaUnica(@PathVariable(value="id") long id) {
-        return pessoaRepository.findById(id);
+    public Person listaPessoaUnica(@PathVariable(value="id") long id) {
+        return personRepository.findById(id);
     }
 
     @PostMapping("/pessoa")
-    public Pessoa salvaPessoa(@RequestBody Pessoa pessoa)  {
-        return pessoaRepository.save(pessoa);
+    public Person salvaPessoa(@RequestBody Person pessoa)  {
+        return personRepository.save(pessoa);
     }
 }

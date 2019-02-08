@@ -18,33 +18,33 @@ import javax.persistence.Table;
 import java.io.Serializable;
 
 @Entity
-@Table(name="alunos")
+@Table(name="students")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class Aluno implements Serializable {
+public class Student implements Serializable {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="alunos_sequence")
-    @SequenceGenerator(name="alunos_sequence", sequenceName="sq_alunos")
+    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="students_sequence")
+    @SequenceGenerator(name="students_sequence", sequenceName="sq_students")
     private long id;
 
     @ManyToOne(fetch= FetchType.LAZY)
-    @JoinColumn(name="id_pessoa", referencedColumnName = "id")
-    private Pessoa pessoa;
+    @JoinColumn(name="id_person", referencedColumnName = "id")
+    private Person person;
 
     @ManyToOne(fetch= FetchType.LAZY)
-    @JoinColumn(name="id_turma", referencedColumnName = "id")
+    @JoinColumn(name="id_group", referencedColumnName = "id")
     @JsonIgnore
-    private Turma turma;
+    private Group group;
 
-    private boolean frequente;
+    private boolean frequent;
 
 
-    public Aluno(Pessoa p, Turma t) {
-        this.pessoa = p;
-        this.turma = t;
-        this.frequente = true;
+    public Student(Person p, Group g) {
+        this.person = p;
+        this.group = g;
+        this.frequent = true;
     }
 }

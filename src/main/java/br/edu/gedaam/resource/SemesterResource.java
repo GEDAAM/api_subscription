@@ -1,7 +1,7 @@
 package br.edu.gedaam.resource;
 
-import br.edu.gedaam.model.SemestreLetivo;
-import br.edu.gedaam.repository.SemestreLetivoRepository;
+import br.edu.gedaam.model.Semester;
+import br.edu.gedaam.repository.SemesterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,25 +14,25 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value="/api")
-public class SemestreLetivoResource {
+public class SemesterResource {
 
     @Autowired
-    SemestreLetivoRepository semestreLetivoRepository;
+    SemesterRepository semesterRepository;
 
     @GetMapping("/semestresletivos")
-    public List<SemestreLetivo> listaSemestres() {
-        return semestreLetivoRepository.findAll();
+    public List<Semester> listaSemestres() {
+        return semesterRepository.findAll();
     }
 
 
     @GetMapping("/semestreletivo/{id}")
-    public SemestreLetivo listaSemestreUnico(@PathVariable(value="id") long id) {
-        return semestreLetivoRepository.findById(id);
+    public Semester listaSemestreUnico(@PathVariable(value="id") long id) {
+        return semesterRepository.findById(id);
     }
 
     @PostMapping("/semestreletivo")
-    public SemestreLetivo salvaSemestreLetivo(@RequestBody SemestreLetivo semestreLetivo)  {
-        return semestreLetivoRepository.save(semestreLetivo);
+    public Semester salvaSemestreLetivo(@RequestBody Semester semester)  {
+        return semesterRepository.save(semester);
     }
 
 }

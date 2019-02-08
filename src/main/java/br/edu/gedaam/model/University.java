@@ -12,22 +12,22 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="faculdades")
+@Table(name="universities")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Faculdade {
+public class University {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="faculdades_sequence")
-    @SequenceGenerator(name="faculdades_sequence", sequenceName="sq_faculdades")
+    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="universities_sequence")
+    @SequenceGenerator(name="universities_sequence", sequenceName="sq_universities")
     private long id;
 
-    private String nome;
+    private String name;
 
 
-    public Faculdade(String nome)   {
-        this.nome = nome;
+    public University(String name)   {
+        this.name = name;
     }
 
 }

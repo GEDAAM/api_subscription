@@ -1,6 +1,6 @@
 package br.edu.gedaam.model.enums;
 
-public enum StatusTurma {
+public enum GroupStatus {
 
     A_INICIAR,
     EM_ANDAMENTO,

@@ -8,15 +8,15 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class InscricaoServiceTest {
+public class SubscriptionServiceTest {
 
 
     @Autowired
-    InscricaoService inscricaoService;
+    SubscriptionService subscriptionService;
 
     @Test
     public void importFile() {
-        inscricaoService.importFile();
+        subscriptionService.importFile();
     }
 
 }

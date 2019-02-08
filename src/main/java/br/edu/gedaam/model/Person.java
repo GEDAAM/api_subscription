@@ -18,48 +18,38 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name="pessoas")
+@Table(name="people")
 @Data
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @AllArgsConstructor
 @NoArgsConstructor
-public class Pessoa implements Serializable {
+public class Person implements Serializable {
 
 
     @Id
-    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="pessoas_sequence")
-    @SequenceGenerator(name="pessoas_sequence", sequenceName="sq_pessoas")
+    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="people_sequence")
+    @SequenceGenerator(name="people_sequence", sequenceName="sq_people")
     private long id;
 
-    String nome;
+    String name;
     String cpf;
 
-    String matricula;
+    String registrationNumber;
     String email;
-    String telefone;
-    String anoSemestreIngressoFaculdade;
-    Integer periodo;
+    String phone;
+    Integer period;
 
 
-    @OneToMany(mappedBy="pessoa")
+    @OneToMany(mappedBy="person")
     @JsonIgnore
-    private List<Aluno> alunos;
+    private List<Student> students;
 
     @ManyToOne
-    Faculdade faculdade;
+    University university;
 
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getNome()  {
-        return nome;
-    }
-
-    public Pessoa(String nome, Integer periodo, Faculdade faculdade)  {
-        this.nome = nome;
-        this.periodo = periodo;
-        this.faculdade = faculdade;
+    public Person(String name, Integer period, University university)  {
+        this.name = name;
+        this.period = period;
+        this.university = university;
     }
 }
