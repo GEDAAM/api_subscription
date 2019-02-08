@@ -13,6 +13,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.sql.Date;
 
 @Entity
 @Table(name="inscricoes")
@@ -23,6 +24,8 @@ public class Inscricao implements Serializable {
     @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="inscricoes_sequence")
     @SequenceGenerator(name="inscricoes_sequence", sequenceName="sq_inscricoes")
     private long id;
+
+    private Date dataHoraInscricao;
 
     @ManyToOne(fetch= FetchType.LAZY)
     @JoinColumn(name="pessoa_id")

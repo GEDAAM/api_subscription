@@ -2,7 +2,9 @@ package br.edu.gedaam.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,6 +21,8 @@ import java.util.List;
 @Table(name="pessoas")
 @Data
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@AllArgsConstructor
+@NoArgsConstructor
 public class Pessoa implements Serializable {
 
 
@@ -34,6 +38,7 @@ public class Pessoa implements Serializable {
     String email;
     String telefone;
     String anoSemestreIngressoFaculdade;
+    Integer periodo;
 
 
     @OneToMany(mappedBy="pessoa")
@@ -50,5 +55,11 @@ public class Pessoa implements Serializable {
 
     public String getNome()  {
         return nome;
+    }
+
+    public Pessoa(String nome, Integer periodo, Faculdade faculdade)  {
+        this.nome = nome;
+        this.periodo = periodo;
+        this.faculdade = faculdade;
     }
 }

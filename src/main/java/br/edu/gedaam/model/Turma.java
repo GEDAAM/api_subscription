@@ -2,7 +2,9 @@ package br.edu.gedaam.model;
 
 import br.edu.gedaam.model.enums.StatusTurma;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -25,6 +27,8 @@ import java.util.List;
 @Table(name="turmas")
 @Data
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@AllArgsConstructor
+@NoArgsConstructor
 public class Turma implements Serializable {
 
 
@@ -34,6 +38,7 @@ public class Turma implements Serializable {
     private long id;
 
     private String tema;
+    private String local;
     private StatusTurma statusTurma;
 
     private Date dtInicio;
@@ -81,6 +86,22 @@ public class Turma implements Serializable {
     public Turma addCoodinator(Pessoa pessoa)  {
         getCoordenadores().add(pessoa);
         return this;
+    }
+
+    public Turma(String tema, String local, boolean segundaFeira, boolean tercaFeira, boolean quartaFeira,
+                 boolean quintaFeira, boolean sextaFeira, Time horaInicio, Time horaFim) {
+        this.tema = tema;
+        this.local = local;
+        this.segundaFeira = segundaFeira;
+        this.tercaFeira = tercaFeira;
+        this.quartaFeira = quartaFeira;
+        this.quintaFeira = quintaFeira;
+        this.sextaFeira = sextaFeira;
+        this.sabado = false;
+        this.horaInicio = horaInicio;
+        this.horaFim = horaFim;
+        numeroMinimoInscritos = 0;
+        numeroMaximoVagas = 10;
     }
 
 }

@@ -28,7 +28,7 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        wakeup();
+        //wakeup();
         SpringApplication.run(Application.class, args);
     }
 }
