@@ -28,17 +28,19 @@ public class Groups201802Service {
 
         coordinators.add(new Person("Luana", 9, universities.get("UFMG")));
         coordinators.add(new Person("Peu", 9, universities.get("UFMG")));
-        newGroup("INGLÊS | Luana (9°) e Peu (9°) - Campus UFMG Saúde - Segunda-feira: 18h30-20h30",
+        Group group = newGroup("INGLÊS | Luana (9°) e Peu (9°) - Campus UFMG Saúde - Segunda-feira: 18h30-20h30",
                 "Inglês", "Campus UFMG Saúde", true, false, false,
                 false, false, "18:30", "20:30", coordinators, semester);
+        groups.put("Luana (9°) e Peu (9°) - Campus UFMG Saúde - Segunda-feira: 18h30-20h30",group);
 
 
         coordinators = new ArrayList<>();
         coordinators.add(new Person("Isabella Miranda", 5, universities.get("UFMG")));
         coordinators.add(new Person("Wendel", 5, universities.get("UFMG")));
-        newGroup("INGLÊS | Isabella Miranda (5°) e Wendel (5°) - Campus UFMG Saúde - Quarta-feira: 18h00-20h00",
+        group = newGroup("Isabella Miranda (5°) e Wendel (5°) - Campus UFMG Saúde - Quarta-feira: 18h00-20h00",
                 "Inglês", "Campus UFMG Saúde", false, false, true,
                 false, false, "18:00", "20:00", coordinators, semester);
+        groups.put("INGLÊS | Isabella Miranda (5°) e Wendel (5°) - Campus UFMG Saúde - Quarta-feira: 18h00-20h00", group);
 
         coordinators = new ArrayList<>();
         coordinators.add(new Person("Nina", 5, universities.get("UFMG")));
@@ -48,11 +50,12 @@ public class Groups201802Service {
                 "Libras", "Campus UFMG Saúde", false, true, false,
                 false, false, "18:30", "20:00", coordinators, semester);
 
+
         coordinators = new ArrayList<>();
         coordinators.add(new Person("Léo Padre", 9, universities.get("UFMG")));
-        newGroup("RESIDÊNCIA MÉDICA | Léo Padre (9°) - Campus UFMG Saúde - Segunda-feira: 13h00-14h00",
+        newGroup("RESIDÊNCIA MÉDICA | Léo Padre (9°) - Campus UFMG Saúde - Segunda-feira: 12h00-14h00",
                 "Residência Médica", "Campus UFMG Saúde", true, false, false,
-                false, false, "13:00", "14:00", coordinators, semester);
+                false, false, "12:00", "14:00", coordinators, semester);
 
 
         coordinators = new ArrayList<>();
@@ -64,9 +67,10 @@ public class Groups201802Service {
         coordinators = new ArrayList<>();
         coordinators.add(new Person("Thassi", 5, universities.get("UFMG")));
         coordinators.add(new Person("Júlia Casali", 5, universities.get("UFMG")));
-        newGroup("TURMA PARA CALOUROS | Thassi (5°) e Júlia Casali (5°) - Campus UFMG Saúde - Terça-feira: 12h00-13h00",
+        group = newGroup("Thassi (5°) e Júlia Casali (5°) - Campus UFMG Saúde - Terça-feira: 12h00-13h00 | Turma para Calouros",
                 "Group para Calouros", "Campus UFMG Saúde", false, true, false,
                 false, false, "12:00", "13:00", coordinators, semester);
+        groups.put("Thassi (5°) e Júlia Casali (5°) - Campus UFMG Saúde - Terça-feira: 12h00-14h00 | Turma para Calouros", group);
 
         coordinators = new ArrayList<>();
         coordinators.add(new Person("Fernanda", 8, universities.get("UFMG")));
@@ -140,12 +144,20 @@ public class Groups201802Service {
                 true, false, "18:20", "20:00", coordinators, semester);
 
         coordinators = new ArrayList<>();
-        coordinators.add(new Person("Gabriela", 3, universities.get("UniBH")));
-        coordinators.add(new Person("Lara", 6, universities.get("UniBH")));
+        coordinators.add(new Person("Lara", 5, universities.get("UniBH")));
         coordinators.add(new Person("Manuela", 5, universities.get("UniBH")));
-        newGroup( "Gabriela (3°) e Lara (6°) e Manuela (5°) - Campus UniBH Estoril - Segunda-feira: 17h00-19h00",
+        newGroup( "Lara (5°) e Manuela (5°) - Campus UniBH Estoril - Sexta-feira: 19h00-20h30",
+                "", "Campus UniBH Estoril", false, false, false,
+                false, true, "19:00", "20:30", coordinators, semester);
+
+
+        coordinators = new ArrayList<>();
+        coordinators.add(new Person("Gabriela", 3, universities.get("UniBH")));
+        coordinators.add(new Person("Marília", 6, universities.get("UniBH")));
+        group = newGroup( "Gabriela (3°) e Marília (6°) - Campus UniBH Estoril - Segunda-feira: 17h00-19h00",
                 "", "Campus UniBH Estoril", true, false, false,
                 false, false, "17:00", "19:00", coordinators, semester);
+        groups.put("Gabriela (3°), Lara (6°) e Manuela (5°) - Campus UniBH Estoril - Segunda-feira: 17h00-19h00", group);
 
         coordinators = new ArrayList<>();
         coordinators.add(new Person("Carolina", 4, universities.get("UniBH")));
@@ -164,9 +176,12 @@ public class Groups201802Service {
         coordinators = new ArrayList<>();
         coordinators.add(new Person("Julia", 5, universities.get("UniBH")));
         coordinators.add(new Person("André", 9, universities.get("UniBH")));
-        newGroup( "Julia (5°) e André (9°) - Campus UniBH Estoril - Quarta-feira: 18h00-20h00",
-                "", "Campus UniBH Estoril", false, false, true,
+        group = newGroup( "Julia (5°) e André (9°) - Campus UniBH Estoril - Terça-feira: 18h00-20h00",
+                "", "Campus UniBH Estoril", false, true, false,
                 false, false, "18:00", "20:00", coordinators,semester);
+        groups.put("Julia (5°) e André (9°) - Campus UniBH Estoril - Quarta-feira: 18h00-20h00", group);
+
+
 
         coordinators = new ArrayList<>();
         coordinators.add(new Person("Tifany Rafaely", 4, universities.get("UFMG")));
@@ -177,7 +192,7 @@ public class Groups201802Service {
         return groups;
     }
 
-    private void newGroup(String key, String desc, String local,
+    private Group newGroup(String key, String desc, String local,
                           boolean monday, boolean tuesday, boolean wednesday, boolean thrusday, boolean friday,
                           String timeBegin, String timeEnd, List<Person> coordinators, Semester semester) {
 
@@ -191,6 +206,7 @@ public class Groups201802Service {
         group.setStatus(GroupStatus.A_INICIAR);
         groupRepository.save(group);
         groups.put(key, group);
+        return (group);
     }
 
 

@@ -58,7 +58,7 @@ public class Group implements Serializable {
     private int minOfStudents;
 
 
-    @OneToMany(mappedBy = "group")
+    @OneToMany(mappedBy = "group", fetch = FetchType.EAGER)
     private List<Student> students;
 
     @OneToMany(targetEntity = Person.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -69,15 +69,17 @@ public class Group implements Serializable {
     private Semester semester;
 
 
+/*
     public List<Student> getStudents() {
-        if (this.students == null) {
+        if (null == this.students) {
             this.students = new ArrayList<>();
         }
         return students;
     }
+*/
 
     public List<Person> getCoordinators() {
-        if (this.coordinators == null) {
+        if (null == this.coordinators) {
             this.coordinators = new ArrayList<>();
         }
         return coordinators;
@@ -86,6 +88,10 @@ public class Group implements Serializable {
     public Group addCoodinator(Person person)  {
         getCoordinators().add(person);
         return this;
+    }
+
+    public boolean isFull() {
+        return (this.getStudents().size() >= this.getMaxOfStudents());
     }
 
     public Group(String theme, String local, boolean monday, boolean tuesday, boolean wednesday,
@@ -101,7 +107,7 @@ public class Group implements Serializable {
         this.timeBegin = timeBegin;
         this.timeEnd = timeEnd;
         minOfStudents = 0;
-        maxOfStudents = 10;
+        maxOfStudents = 5;
     }
 
 }

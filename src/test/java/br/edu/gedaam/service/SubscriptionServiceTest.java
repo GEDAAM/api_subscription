@@ -14,9 +14,13 @@ public class SubscriptionServiceTest {
     @Autowired
     SubscriptionService subscriptionService;
 
+    @Autowired
+    GroupDistributionService groupDistributionService;
+
     @Test
     public void importFile() {
         subscriptionService.importFile();
+        groupDistributionService.makeIt();
     }
 
 }

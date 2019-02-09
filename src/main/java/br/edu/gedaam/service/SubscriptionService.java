@@ -1,13 +1,14 @@
 package br.edu.gedaam.service;
 
 import br.edu.gedaam.model.Group;
-import br.edu.gedaam.model.University;
-import br.edu.gedaam.model.Subscription;
 import br.edu.gedaam.model.Person;
 import br.edu.gedaam.model.Semester;
-import br.edu.gedaam.repository.SubscriptionRepository;
+import br.edu.gedaam.model.Subscription;
+import br.edu.gedaam.model.University;
+import br.edu.gedaam.model.enums.SubscriptionStatus;
 import br.edu.gedaam.repository.PersonRepository;
 import br.edu.gedaam.repository.SemesterRepository;
+import br.edu.gedaam.repository.SubscriptionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -89,12 +90,14 @@ public class SubscriptionService {
         person.setEmail(lineArray[6].trim());
         person.setPeriod(Integer.getInteger(lineArray[4].trim()));
 
-        personRepository.save(person);
+        personRepository.saveAndFlush(person);
 
-        String opcao1Processada = lineArray[8].trim().isEmpty() ?
-                (lineArray[10].trim().isEmpty() ? lineArray[12].trim() : lineArray[10].trim()) : lineArray[8].trim();
-        String opcao2Processada = lineArray[9].trim().isEmpty() ?
-                (lineArray[11].trim().isEmpty() ? lineArray[13].trim() : lineArray[11].trim()) : lineArray[9].trim();
+        String opcao1Processada = (!lineArray[8].trim().isEmpty()) ? lineArray[8].trim() : lineArray[10].trim();
+        opcao1Processada = (!opcao1Processada.isEmpty()) ? opcao1Processada : lineArray[12].trim();
+
+        String opcao2Processada = (!lineArray[9].trim().isEmpty()) ? lineArray[9].trim() : lineArray[11].trim();
+        opcao2Processada = (!opcao2Processada.isEmpty()) ? opcao2Processada : lineArray[13].trim();
+
 
         Subscription subscription = new Subscription();
         subscription.setPerson(person);
@@ -102,8 +105,9 @@ public class SubscriptionService {
         subscription.setGroupOption2(groupLookUp(opcao2Processada));
         subscription.setSubscriptionTimeStamp(DateTimeService.formatDateTime(lineArray[0].trim()));
         subscription.setSemester(semester);
+        subscription.setStatus(SubscriptionStatus.TO_BE_PROCESSED);
 
-        subscriptionRepository.save(subscription);
+        subscriptionRepository.saveAndFlush(subscription);
 
     }
 
@@ -112,7 +116,7 @@ public class SubscriptionService {
         semester.setActive(true);
         semester.setNumber(2);
         semester.setYear(2018);
-        return semesterRepository.save(semester);
+        return semesterRepository.saveAndFlush(semester);
     }
 
     private Group groupLookUp(String descricaoTurma) {

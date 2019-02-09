@@ -1,6 +1,5 @@
 package br.edu.gedaam.resource;
 
-import br.edu.gedaam.model.Group;
 import br.edu.gedaam.model.Subscription;
 import br.edu.gedaam.repository.SubscriptionRepository;
 import br.edu.gedaam.service.EmailService;
@@ -63,8 +62,9 @@ public class SubscriptionResource {
         subscriptionService.importFile();
     }
 
-    @PutMapping("/inscricao/processar")
-    public List<Subscription> distributeGroup(@RequestBody Group turma)  {
+    @GetMapping("/inscricao/faztudo")
+    public List<Subscription> distributeGroup()  {
+        subscriptionService.importFile();
         return groupDistributionService.makeIt();
     }
 

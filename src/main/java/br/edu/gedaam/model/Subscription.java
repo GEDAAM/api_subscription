@@ -1,5 +1,6 @@
 package br.edu.gedaam.model;
 
+import br.edu.gedaam.model.enums.SubscriptionStatus;
 import lombok.Data;
 
 import javax.persistence.Entity;
@@ -42,5 +43,7 @@ public class Subscription implements Serializable {
     @OneToOne(fetch= FetchType.LAZY)
     @JoinColumn(name="id_group_option2")
     private Group groupOption2;
+
+    private SubscriptionStatus status;
 
 }
