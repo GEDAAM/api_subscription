@@ -34,7 +34,7 @@ public class Student implements Serializable {
     @JoinColumn(name="id_person", referencedColumnName = "id")
     private Person person;
 
-    @ManyToOne(fetch= FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name="id_group", referencedColumnName = "id")
     @JsonIgnore
     private Group group;

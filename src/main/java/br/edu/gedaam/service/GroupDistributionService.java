@@ -42,14 +42,17 @@ public class GroupDistributionService {
                 if (!group1.isFull()) {
                     Student student = new Student(subscription.getPerson(), group1);
                     studentRepository.saveAndFlush(student);
+                    group1.getStudents().add(student);
+                    groupRepository.saveAndFlush(group1);
                     subscription.setStatus(SubscriptionStatus.GOT_FIRST_OPTION);
                 } else {
                     if ((null != subscription.getGroupOption2()))  {
                         Group group2 = groupRepository.findById(subscription.getGroupOption2().getId());
-                        System.out.println("Group: " + group1.getId() + " Status: " + group1.isFull());
                         if (!group2.isFull()) {
                             Student student = new Student(subscription.getPerson(), group2);
                             studentRepository.saveAndFlush(student);
+                            group2.getStudents().add(student);
+                            groupRepository.saveAndFlush(group2);
                             subscription.setStatus(SubscriptionStatus.GOT_SECOND_OPTION);
                         }
                         else {

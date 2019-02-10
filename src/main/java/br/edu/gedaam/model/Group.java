@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -58,25 +57,25 @@ public class Group implements Serializable {
     private int minOfStudents;
 
 
-    @OneToMany(mappedBy = "group", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "group")
     private List<Student> students;
 
-    @OneToMany(targetEntity = Person.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(targetEntity = Person.class, cascade = CascadeType.ALL)
     private List<Person> coordinators;
 
-    @OneToOne(fetch= FetchType.LAZY)
+    @OneToOne
     @JoinColumn(name="id_semester")
     private Semester semester;
 
 
-/*
+
     public List<Student> getStudents() {
         if (null == this.students) {
             this.students = new ArrayList<>();
         }
         return students;
     }
-*/
+
 
     public List<Person> getCoordinators() {
         if (null == this.coordinators) {
