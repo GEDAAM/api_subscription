@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,7 +30,6 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Group implements Serializable {
-
 
     @Id
     @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="groups_sequence")
@@ -57,7 +57,7 @@ public class Group implements Serializable {
     private int minOfStudents;
 
 
-    @OneToMany(mappedBy = "group")
+    @OneToMany(mappedBy = "group", fetch= FetchType.EAGER)
     private List<Student> students;
 
     @OneToMany(targetEntity = Person.class, cascade = CascadeType.ALL)
@@ -94,7 +94,7 @@ public class Group implements Serializable {
     }
 
     public Group(String theme, String local, boolean monday, boolean tuesday, boolean wednesday,
-                 boolean thursday, boolean friday, Time timeBegin, Time timeEnd) {
+                 boolean thursday, boolean friday, Time timeBegin, Time timeEnd, Integer maxOfStudents) {
         this.theme = theme;
         this.local = local;
         this.monday = monday;
@@ -105,8 +105,7 @@ public class Group implements Serializable {
         this.saturday = false;
         this.timeBegin = timeBegin;
         this.timeEnd = timeEnd;
-        minOfStudents = 0;
-        maxOfStudents = 5;
+        this.minOfStudents = 0;
+        this.maxOfStudents = maxOfStudents;
     }
-
 }

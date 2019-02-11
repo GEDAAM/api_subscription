@@ -1,5 +1,6 @@
 package br.edu.gedaam.service;
 
+import br.edu.gedaam.model.Semester;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +20,8 @@ public class SubscriptionServiceTest {
 
     @Test
     public void importFile() {
-        subscriptionService.importFile();
-        groupDistributionService.makeIt();
+        Semester semester = subscriptionService.importFile();
+        groupDistributionService.makeIt(semester);
     }
 
 }

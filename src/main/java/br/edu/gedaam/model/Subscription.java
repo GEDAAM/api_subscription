@@ -20,13 +20,15 @@ import java.sql.Timestamp;
 @Table(name="subscriptions")
 @Data
 public class Subscription implements Serializable {
-
     @Id
     @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="subscriptions_sequence")
     @SequenceGenerator(name="subscriptions_sequence", sequenceName="sq_subscriptions")
     private long id;
 
     private Timestamp subscriptionTimeStamp;
+    private SubscriptionStatus status;
+    private boolean simposiumPresent;
+    private boolean frequentLastSemester;
 
     @ManyToOne(fetch= FetchType.LAZY)
     @JoinColumn(name="id_person")
@@ -43,7 +45,4 @@ public class Subscription implements Serializable {
     @OneToOne(fetch= FetchType.LAZY)
     @JoinColumn(name="id_group_option2")
     private Group groupOption2;
-
-    private SubscriptionStatus status;
-
 }

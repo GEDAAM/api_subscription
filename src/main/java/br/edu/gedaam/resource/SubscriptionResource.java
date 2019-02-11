@@ -1,5 +1,6 @@
 package br.edu.gedaam.resource;
 
+import br.edu.gedaam.model.Semester;
 import br.edu.gedaam.model.Subscription;
 import br.edu.gedaam.repository.SubscriptionRepository;
 import br.edu.gedaam.service.EmailService;
@@ -21,7 +22,7 @@ import java.util.List;
 public class SubscriptionResource {
 
     @Autowired
-    SubscriptionRepository inscricaoRepository;
+    SubscriptionRepository subscriptionRepository;
 
     @Autowired
     SubscriptionService subscriptionService;
@@ -39,18 +40,18 @@ public class SubscriptionResource {
 
     @GetMapping("/inscricoes")
     public List<Subscription> listaInscricoes() {
-        return inscricaoRepository.findAll();
+        return subscriptionRepository.findAll();
     }
 
 
     @GetMapping("/inscricao/{id}")
     public Subscription listaInscricaoUnica(@PathVariable(value="id") long id) {
-        return inscricaoRepository.findById(id);
+        return subscriptionRepository.findById(id);
     }
 
     @PostMapping("/inscricao")
     public Subscription salvaInscricao(@RequestBody Subscription subscription)  {
-        Subscription subscription1 = inscricaoRepository.save(subscription);
+        Subscription subscription1 = subscriptionRepository.save(subscription);
         /*emailService.sendEmail(inscricao.getPerson().getName(),
                 inscricao.getPerson().getEmail(),
                 mailSubject, mailText);*/
@@ -64,8 +65,8 @@ public class SubscriptionResource {
 
     @GetMapping("/inscricao/faztudo")
     public List<Subscription> distributeGroup()  {
-        subscriptionService.importFile();
-        return groupDistributionService.makeIt();
+        Semester semester = subscriptionService.importFile();
+        return groupDistributionService.makeIt(semester);
     }
 
 
