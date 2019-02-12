@@ -1,9 +1,8 @@
 package br.edu.gedaam.resource;
 
 import br.edu.gedaam.model.Semester;
-import br.edu.gedaam.model.Subscription;
 import br.edu.gedaam.repository.SubscriptionRepository;
-import br.edu.gedaam.service.EmailService;
+import br.edu.gedaam.util.EmailUtil;
 import br.edu.gedaam.service.GroupDistributionService;
 import br.edu.gedaam.service.SubscriptionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,23 +35,23 @@ public class SubscriptionResource {
 
 
     @Autowired
-    EmailService emailService;
+    EmailUtil emailUtil;
 
     @GetMapping("/inscricoes")
-    public List<Subscription> listaInscricoes() {
+    public List<br.edu.gedaam.model.Subscription> listaInscricoes() {
         return subscriptionRepository.findAll();
     }
 
 
     @GetMapping("/inscricao/{id}")
-    public Subscription listaInscricaoUnica(@PathVariable(value="id") long id) {
+    public br.edu.gedaam.model.Subscription listaInscricaoUnica(@PathVariable(value="id") long id) {
         return subscriptionRepository.findById(id);
     }
 
     @PostMapping("/inscricao")
-    public Subscription salvaInscricao(@RequestBody Subscription subscription)  {
-        Subscription subscription1 = subscriptionRepository.save(subscription);
-        /*emailService.sendEmail(inscricao.getPerson().getName(),
+    public br.edu.gedaam.model.Subscription salvaInscricao(@RequestBody br.edu.gedaam.model.Subscription subscription)  {
+        br.edu.gedaam.model.Subscription subscription1 = subscriptionRepository.save(subscription);
+        /*emailUtil.sendEmail(inscricao.getPerson().getName(),
                 inscricao.getPerson().getEmail(),
                 mailSubject, mailText);*/
         return subscription;
@@ -64,7 +63,7 @@ public class SubscriptionResource {
     }
 
     @GetMapping("/inscricao/faztudo")
-    public List<Subscription> distributeGroup()  {
+    public List<br.edu.gedaam.model.Subscription> distributeGroup()  {
         Semester semester = subscriptionService.importFile();
         return groupDistributionService.makeIt(semester);
     }

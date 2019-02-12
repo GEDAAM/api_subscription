@@ -1,4 +1,4 @@
-package br.edu.gedaam.service;
+package br.edu.gedaam.util;
 
 
 import com.mashape.unirest.http.HttpResponse;
@@ -8,7 +8,7 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 import org.springframework.stereotype.Component;
 
 @Component
-public class EmailService {
+public class EmailUtil {
 
     String resourceUrl = System.getenv("EMAIL_SERVER");
     String emailUser = System.getenv("EMAIL_SERVER_USER");

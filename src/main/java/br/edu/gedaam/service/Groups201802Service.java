@@ -6,6 +6,7 @@ import br.edu.gedaam.model.Person;
 import br.edu.gedaam.model.Semester;
 import br.edu.gedaam.model.enums.GroupStatus;
 import br.edu.gedaam.repository.GroupRepository;
+import br.edu.gedaam.util.DateTimeConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -199,8 +200,8 @@ public class Groups201802Service {
                           String timeBegin, String timeEnd, List<Person> coordinators, Integer maxOfStudents) {
 
         Group group = new Group(desc, local, monday,tuesday,wednesday,thrusday,friday,
-                DateTimeService.formatTime(timeBegin+":00"),
-                DateTimeService.formatTime(timeEnd+":00"), maxOfStudents);
+                DateTimeConverter.formatTime(timeBegin+":00"),
+                DateTimeConverter.formatTime(timeEnd+":00"), maxOfStudents);
         group.setCoordinators(coordinators);
         group.setSemester(semester);
         group.setDateBegin(Date.valueOf("2018-03-01"));
@@ -210,6 +211,4 @@ public class Groups201802Service {
         groups.put(key, group);
         return (group);
     }
-
-
 }

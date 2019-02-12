@@ -25,17 +25,9 @@ public class GroupDistributionService {
     @Autowired
     private GroupRepository groupRepository;
 
-
     public List<Subscription> makeIt(Semester semester) {
 
-        //Sort sortByTimeStamp = new Sort(Sort.Direction.DESC, "subscriptionTimeStamp");
-        //List<Subscription> subscriptions = subscriptionRepository.findAll(sortByTimeStamp);
-
         List<Subscription> subscriptions = subscriptionRepository.findBySemesterOrderByFrequentLastSemesterDescSimposiumPresentDescSubscriptionTimeStampDesc(semester);
-
-        // TODO: filtrar por status somente as que precisam ser processadas e filtrar por semestre
-        // TODO: validar repetidos - inscrições em duplicidade
-        // TODO: setar numero de vagas para os grupos
 
         for (Subscription subscription : subscriptions) {
             if (null != subscription.getGroupOption1()) {

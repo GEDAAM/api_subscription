@@ -1,6 +1,6 @@
 package br.edu.gedaam;
 
-import br.edu.gedaam.service.EmailService;
+import br.edu.gedaam.util.EmailUtil;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -15,8 +15,8 @@ public class Application {
         TimerTask repeatedTask = new TimerTask() {
             public void run() {
                 System.out.println("Wake up");
-                EmailService emailService = new EmailService();
-                emailService.sendEmail("RaqueL Lemos", "raqlem@gmail.com",
+                EmailUtil emailUtil = new EmailUtil();
+                emailUtil.sendEmail("RaqueL Lemos", "raqlem@gmail.com",
                         "Wake Up", "Waking up");
             }
         };

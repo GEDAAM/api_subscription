@@ -1,4 +1,4 @@
-package br.edu.gedaam.service;
+package br.edu.gedaam.util;
 
 import java.sql.Time;
 import java.sql.Timestamp;
@@ -6,7 +6,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class DateTimeService {
+public class DateTimeConverter {
 
     static public Time formatTime(String time) {
         SimpleDateFormat timeFormatter = new SimpleDateFormat( "hh:mm:ss");
