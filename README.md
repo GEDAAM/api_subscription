@@ -1,18 +1,14 @@
-# subscriptionapijava
-Prova de conceito para api de inscrição em Java
+# API Subscription
 
+A presente API tem por objetivo processar as inscrições recebidas e fazer a distribuiçao de inscritos nas turmas.
 
 #Para rodar a API:
-https://gedaamsubscriptionapi.herokuapp.com/greeting?name=Raquel
 
-#Json resposta exemplo:
+Localmente, devem estar presentes três arquivos:
+- Lista de presentes no simpósio 
+- Lista de frequencia dos alunos do semestre anterior
+- Lista de inscritos, com as respectivas opçoes
 
-{"id":3,"content":"Hello, Raquel!"}
+Rodar o teste da classe SubscriptionService.
 
-
-#Para subir a aplicação:
-
-- Baixar o Heroku Cli (para os comandos de linha)
-- Adicionar o remote: git remote add heroku	https://git.heroku.com/gedaamsubscriptionapi.git
-- Para subir alterações no Heroku: git push heroku master
-
+Será devolvida em JSON a lista de inscriçoes processadas. 
