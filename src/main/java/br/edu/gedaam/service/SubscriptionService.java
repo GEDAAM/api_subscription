@@ -34,7 +34,7 @@ public class SubscriptionService extends FileReader {
     UniversitiesService universitiesService;
 
     @Autowired
-    Groups201802Service groups201802Service;
+    Groups201901Service groups201901Service;
 
     @Autowired
     SimposiumService simposiumService;
@@ -53,7 +53,8 @@ public class SubscriptionService extends FileReader {
 
         semester = createSemester();
         universities = universitiesService.load();
-        groups = groups201802Service.load(semester, universities);
+
+        groups = groups201901Service.load(semester,universities);
 
         simposiumPresentSet = simposiumService.importData();
         infrequentSet = frequencyService.importData();
@@ -98,8 +99,8 @@ public class SubscriptionService extends FileReader {
     private Semester createSemester() {
         Semester semester = new Semester();
         semester.setActive(true);
-        semester.setNumber(2);
-        semester.setYear(2018);
+        semester.setNumber(1);
+        semester.setYear(2019);
         return semesterRepository.saveAndFlush(semester);
     }
 

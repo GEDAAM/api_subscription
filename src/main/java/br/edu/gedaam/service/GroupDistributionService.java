@@ -62,6 +62,8 @@ public class GroupDistributionService {
             }
             subscriptionRepository.saveAndFlush(subscription);
         }
+
+
         return subscriptionRepository.findAll();
     }
 }
