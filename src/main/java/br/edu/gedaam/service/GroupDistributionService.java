@@ -27,7 +27,7 @@ public class GroupDistributionService {
 
     public List<Subscription> makeIt(Semester semester) {
 
-        List<Subscription> subscriptions = subscriptionRepository.findBySemesterOrderByFrequentLastSemesterDescSimposiumPresentDescSubscriptionTimeStampDesc(semester);
+        List<Subscription> subscriptions = subscriptionRepository.findBySemester(semester);
 
         for (Subscription subscription : subscriptions) {
             if (null != subscription.getGroupOption1()) {

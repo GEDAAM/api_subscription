@@ -1,5 +1,6 @@
 package br.edu.gedaam.repository;
 
+import br.edu.gedaam.model.Person;
 import br.edu.gedaam.model.Semester;
 import br.edu.gedaam.model.Subscription;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -10,5 +11,7 @@ public interface SubscriptionRepository extends JpaRepository<Subscription, Long
 
     Subscription findById(long id);
 
-    List<Subscription> findBySemesterOrderByFrequentLastSemesterDescSimposiumPresentDescSubscriptionTimeStampDesc(Semester semester);
+    Subscription findBySemesterAndPerson(Semester semester, Person person);
+
+    List<Subscription> findBySemester(Semester semester);
 }
