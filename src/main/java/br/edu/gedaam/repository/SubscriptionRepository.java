@@ -13,5 +13,8 @@ public interface SubscriptionRepository extends JpaRepository<Subscription, Long
 
     Subscription findBySemesterAndPerson(Semester semester, Person person);
 
-    List<Subscription> findBySemester(Semester semester);
+    List<Subscription> findBySemesterOrderById(Semester semester);
+
+    List<Subscription> findAllByOrderById();
+
 }

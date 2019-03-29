@@ -130,7 +130,8 @@ public class SubscriptionServiceServiceTest {
             bw.write("Matrícula,Nome,Telefone,E-Mail,Opcao1, Opcao2, Resultado");
             bw.newLine();
 
-            List<Subscription> subscriptions = subscriptionRepository.findAll();
+
+            List<Subscription> subscriptions = subscriptionRepository.findAllByOrderById();
             for (Subscription subscription:
                     subscriptions) {
                 Person person = personRepository.findById(subscription.getPerson().getId());
